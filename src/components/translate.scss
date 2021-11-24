@@ -7,7 +7,7 @@
 	grid-template-columns: repeat(2, 1fr);
 	grid-gap: 1rem;
 }
-@media screen and (min-width: 360px) and (max-width: 560px) {
+@media screen and (min-width: 200px) and (max-width: 560px) {
 	.grid {
 		display: grid;
 		grid-template-columns: repeat(1, 1fr);
@@ -58,6 +58,10 @@
 		position: absolute;
 		bottom: 5px;
 		left: 5px;
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		max-width: 360px;
 		.tn-btn {
 			display: flex;
 			flex-direction: column;
@@ -68,7 +72,7 @@
 			border: none;
 
 			color: #fff;
-			background: linear-gradient(180deg, #4b91f7 0%, #367af6 100%);
+			background: linear-gradient(to right, #090979 0%, #00d4ff 100%);
 			background-origin: border-box;
 			box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25),
 				inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
@@ -87,7 +91,35 @@
 		.disabled {
 			display: none;
 		}
+		.mic {
+			width: 30px;
+			height: 30px;
+			background: linear-gradient(to right, #090979 0%, #00d4ff 100%);
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			color: #fff;
+			cursor: pointer;
+			z-index: 2;
+		}
 	}
+	.active-voice {
+		position: absolute;
+		bottom: 1rem;
+		display: flex;
+		justify-content: center;
+		left: -15rem;
+		transition: 0.5s;
+		transition-property: left;
+	}
+}
+.activated .active-voice {
+	left: 8rem;
+}
+.not-active .active-voice {
+	left: -15rem;
 }
 textarea::-webkit-scrollbar {
 	width: 4px;

@@ -11,6 +11,15 @@ const App = () => {
 				<Translate />
 				<footer>
 					<b style={{ color: "#037fff" }}>Transcriber INC.</b>
+					<p>
+						Contact the developer via <b>Portfolio</b>{" "}
+						<a
+							href="https://dprincecoder.codes/"
+							target="_blank"
+							rel="noreferrer noopener">
+							Here
+						</a>
+					</p>
 					<p>all rights reserved 2021.</p>
 				</footer>
 			</div>

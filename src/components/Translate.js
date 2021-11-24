@@ -11,6 +11,8 @@ const Translate = () => {
 	const [input, setInput] = useState("");
 	const [output, setOutput] = useState("");
 	const [options, setOptions] = useState([]);
+	const [activeVoice] = useState("Voice is activated, speak now");
+	const [active, setActive] = useState(false);
 
 	//translate fn
 	const translate = async () => {
@@ -30,6 +32,26 @@ const Translate = () => {
 		setOutput(translatedText);
 	};
 
+	const SpeechRecognition =
+		window.SpeechRecognition || window.webkitSpeechRecognition;
+	const recognition = new SpeechRecognition();
+
+	recognition.onstart = function () {
+		setActive(!active);
+	};
+
+	const activateMic = () => {
+		recognition.start();
+	};
+
+	recognition.onresult = function (e) {
+		const current = e.resultIndex;
+		const transcript = e.results[current][0].transcript;
+		console.log(transcript);
+		setInput(transcript);
+		setActive(false);
+	};
+
 	useEffect(() => {
 		const fetchLang = async () => {
 			const res = await axios.get(langURL, {
@@ -40,7 +62,7 @@ const Translate = () => {
 		fetchLang();
 	}, []);
 	return (
-		<div className="translate">
+		<div className={`translate ${active ? "activated" : "not-active"}`}>
 			<div className="grid">
 				<div className="card">
 					<div className="selection">
@@ -60,15 +82,30 @@ const Translate = () => {
 						<textarea
 							cols="50"
 							rows="10"
+							value={input}
 							onInput={(e) => setInput(e.target.value)}
 							placeholder="Tap to enter text here..."></textarea>
 					</div>
 					<div className="translate-btn-option">
-						<button
-							className={`tn-btn ${!input ? "disabled" : ""}`}
-							onClick={() => translate()}>
-							Translate
-						</button>
+						{input && (
+							<>
+								<button className="tn-btn" onClick={() => translate()}>
+									Translate
+								</button>
+								<button className="tn-btn" onClick={() => setInput("")}>
+									clear
+								</button>
+							</>
+						)}
+
+						{!input && (
+							<div className="mic" onClick={activateMic}>
+								<i className="material-icons">mic</i>
+							</div>
+						)}
+					</div>
+					<div className="active-voice">
+						<p>{activeVoice}</p>
 					</div>
 				</div>
 
@@ -91,7 +128,8 @@ const Translate = () => {
 						<textarea
 							cols="50"
 							rows="10"
-							defaultValue={output}
+							value={output}
+							onChange={console.log("hello dear")}
 							placeholder="Your translated text will appear here"></textarea>
 					</div>
 				</div>
