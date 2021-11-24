@@ -1,0 +1,33 @@
+.App {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.center {
+	width: 60%;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+		rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+	background-color: #fff;
+	margin: 1rem;
+	padding: 10px;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+@media screen and (min-width: 360px) and (max-width: 560px) {
+	.center {
+		width: 100%;
+		overflow: hidden;
+		height: 100%;
+	}
+}
+
+@media screen and (min-width: 560px) and (max-width: 900px) {
+	.center {
+		width: 100%;
+		overflow: hidden;
+		height: 100%;
+	}
+}

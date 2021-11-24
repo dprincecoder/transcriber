@@ -1,0 +1,101 @@
+.translate {
+	margin: 1rem;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 1rem;
+}
+@media screen and (min-width: 360px) and (max-width: 560px) {
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		grid-gap: 1rem;
+	}
+}
+
+.card {
+	width: 100%;
+	height: 300px;
+	max-height: 600px;
+	overflow: hidden;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	.selection {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		background-color: #037fff;
+		box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+			rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+		.f,
+		.t {
+			color: white;
+		}
+	}
+	select {
+		display: block;
+	}
+	textarea {
+		width: 100%;
+		max-width: 300px;
+		margin-top: 8px;
+		font-size: medium;
+		// padding: 5px;
+		height: 250px;
+		max-height: 500px;
+		resize: none;
+		border: none;
+		outline: none;
+		&:focus {
+			outline: none;
+		}
+	}
+	.translate-btn-option {
+		position: absolute;
+		bottom: 5px;
+		left: 5px;
+		.tn-btn {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 6px 14px;
+			font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+			border-radius: 6px;
+			border: none;
+
+			color: #fff;
+			background: linear-gradient(180deg, #4b91f7 0%, #367af6 100%);
+			background-origin: border-box;
+			box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25),
+				inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
+			user-select: none;
+			-webkit-user-select: none;
+			touch-action: manipulation;
+
+			&:focus {
+				box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2),
+					0px 0.5px 1.5px rgba(54, 122, 246, 0.25),
+					0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+				outline: 0;
+			}
+			cursor: pointer;
+		}
+		.disabled {
+			display: none;
+		}
+	}
+}
+textarea::-webkit-scrollbar {
+	width: 4px;
+}
+textarea::-webkit-scrollbar-thumb {
+	background-color: white;
+	border-radius: 50px;
+}
+textarea::-webkit-scrollbar-track {
+	background-color: white;
+}
